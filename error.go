@@ -62,7 +62,7 @@ func NewError(apiName string, handle interface{}) error {
 			NativeError: int(ne),
 			Message:     api.UTF16ToString(msg),
 		}
-		if r.State == "08S01" {
+		if r.State == "08S01" || r.State == "08007" || r.State == "HY000"{
 			return driver.ErrBadConn
 		}
 		err.Diag = append(err.Diag, r)
